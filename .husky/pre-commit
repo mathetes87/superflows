@@ -1,4 +1,8 @@
 #!/usr/bin/env sh
+
+# Source ~/.bashrc if it exists, silently continue if it doesn't
+. ~/.bashrc 2>/dev/null || true
+
 . "$(dirname -- "$0")/_/husky.sh"
 
 npm run lint
