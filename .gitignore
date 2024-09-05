@@ -141,3 +141,6 @@ install-sidebar.sh
 docker/development/supabase/
 # Sentry Config File
 .sentryclirc
+
+# local data
+allData*
