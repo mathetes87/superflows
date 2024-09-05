@@ -44,7 +44,16 @@ export default function PlaygroundChatbot(props: {
       if (res.error) throw res.error;
       // Below gets the unique messages and then takes the first 3
       setSuggestions(
-        [...new Set(res.data.map((message) => message.content))].slice(0, 3),
+        [...new Set(res.data.map((message) => {
+          try {
+            // Attempt to decode the content
+            return decodeURIComponent(message.content);
+          } catch (e) {
+            // If decoding fails, return the original content
+            console.warn("Failed to decode message content:", e);
+            return message.content;
+          }
+        }))].slice(0, 3)
       );
     })();
   }, []);
